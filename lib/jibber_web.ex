@@ -31,6 +31,7 @@ defmodule JibberWeb do
     quote do
       use Phoenix.View,
         root: "lib/jibber_web/templates",
+        pattern: "**/*",
         namespace: JibberWeb
 
       # Import convenience functions from controllers
