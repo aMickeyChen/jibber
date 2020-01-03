@@ -1,5 +1,9 @@
 # Jibber
 
+Prerequisite:
+  * Install Erlang and Elixir
+  * Install Postgres
+
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
