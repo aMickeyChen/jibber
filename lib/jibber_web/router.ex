@@ -19,6 +19,12 @@ defmodule JibberWeb.Router do
     get "/", PageController, :index
   end
 
+  scope "/", JibberWeb do
+    pipe_through :api
+
+    resources "/messages", ChatController, only: [:create]
+  end
+
   # Other scopes may use custom stacks.
   # scope "/api", JibberWeb do
   #   pipe_through :api
