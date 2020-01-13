@@ -7,5 +7,7 @@ defmodule Jibber.Repo.Migrations.CreateUsers do
       add :password, :text
       timestamps()
     end
+
+    create unique_index "users", [:email]
   end
 end
