@@ -4,7 +4,7 @@ defmodule Jibber.Factory do
   def user_factory do
     %Jibber.Account.User{
       email: "fake@email.com",
-      password: "valid_password",
+      password: "valid_password"
     }
   end
 end
