@@ -1,11 +1,12 @@
 # Login
 
 defmodule Jibber.AccountTest do
-  use ExUnit.Case
+  use  Jibber.DataCase
+  import Jibber.Factory
 
   describe "login" do
     test "returns jibber user from email and password" do
-      user = %{email: "fake@email.com", password: "valid_password"}
+      user = insert(:user)
       assert Jibber.Account.login("fake@email.com", "valid_password") == {:ok, user}
     end
   end

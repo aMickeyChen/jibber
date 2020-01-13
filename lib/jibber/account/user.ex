@@ -4,6 +4,7 @@ defmodule Jibber.Account.User do
   schema "users" do
     field :email, :string
     field :password, :string
+    timestamps()
     # has_many :posts, Post
   end
 end
