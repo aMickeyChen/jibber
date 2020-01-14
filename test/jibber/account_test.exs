@@ -8,15 +8,18 @@ defmodule Jibber.AccountTest do
   describe "login/2" do
     test "returns jibber user from email and password" do
       user = insert(:user)
-      assert Account.login(user.email, "valid_password") == {:ok, user}
+
+      assert Account.login(user.email, user.password) == {:ok, user}
     end
   end
 
   describe "list_users/1" do
     test "returns list of user from user IDs" do
-      user_ids = insert_list(3, :user) |> Enum.map(& &1.id)
-      assert {:ok, users} = Account.list_users(user_ids)
-      # TODO: happy path only.
+      users = insert_list(3, :user)
+      user_ids = Enum.map(users, & &1.id)
+
+      assert {:ok, result} = Account.list_users(user_ids)
+      assert Enum.sort_by(result, & &1.id) == Enum.sort_by(users, & &1.id)
     end
   end
 end
