@@ -45,7 +45,9 @@ defmodule Jibber.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:ex_machina, "~> 2.3", only: :test},
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
-      {:faker, "~> 0.13", only: :test}
+      {:faker, "~> 0.13", only: :test},
+      {:stream_data, "~> 0.4"},
+      {:norm, "~> 0.10"}
     ]
   end
 
