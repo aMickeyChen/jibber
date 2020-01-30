@@ -9,11 +9,11 @@ defmodule Jibber.Account.User do
     # has_many :posts, Post
   end
 
-  def email() do
+  def email_spec() do
     spec(is_binary() and (&String.match?(&1, ~r([^@]+@[^\.]+\..+))))
   end
 
-  def password() do
+  def password_spec() do
     spec(is_binary() and (&(String.length(&1) >= 8)))
   end
 
@@ -21,8 +21,8 @@ defmodule Jibber.Account.User do
     schema(%{
       user:
         schema(%{
-          email: email(),
-          password: password()
+          email: email_spec(),
+          password: password_spec()
         })
     })
   end

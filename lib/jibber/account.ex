@@ -4,7 +4,7 @@ defmodule Jibber.Account do
   alias Jibber.Repo
   alias Jibber.Account.User
 
-  @contract login(email :: User.email(), password :: User.password()) ::
+  @contract login(email :: User.email_spec(), password :: User.password_spec()) ::
               {:ok, one_of([User.s(), nil])}
   def login(email, password) do
     {:ok, Repo.get_by(User, email: email, password: password)}
