@@ -1,20 +1,15 @@
-# Login
-
 defmodule Jibber.AccountTest do
   use Jibber.DataCase
-  import ExUnitProperties, except: [gen: 1]
-  import Norm
   import Jibber.Factory
   alias Jibber.Account
-  alias Account.User
 
   describe "login/2" do
-    property "users can update names" do
-      check all(user <- gen(User.s())) do
-        insert(:user, email: user.email, password: user.password)
-        assert Account.login(user.email, user.password) == {:ok, user}
-      end
-    end
+    # property "users can update names" do
+    #   check all(user <- gen(User.s())) do
+    #     insert(:user, email: user.email, password: user.password)
+    #     assert Account.login(user.email, user.password) == {:ok, user}
+    #   end
+    # end
 
     test "returns jibber user from email and password" do
       user = insert(:user)
