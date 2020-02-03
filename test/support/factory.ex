@@ -15,4 +15,12 @@ defmodule Jibber.Factory do
       user_ids: Enum.map(users, & &1.id)
     }
   end
+
+  def message_factory do
+    users = insert_list(2, :user)
+
+    %Jibber.Chat.Room{
+      user_ids: Enum.map(users, & &1.id)
+    }
+  end
 end

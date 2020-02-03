@@ -9,4 +9,11 @@ defmodule Jibber.Chat do
 
     {:ok, Repo.all(query)}
   end
+
+  def list_messages(room_id) do
+    true
+    # query = from(r in Room, where: ^user_id in r.user_ids)
+
+    # {:ok, Repo.all(query)}
+  end
 end
