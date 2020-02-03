@@ -19,4 +19,15 @@ defmodule Jibber.ChatTest do
       assert Enum.map(result, & &1.id) == Enum.map(messages, & &1.id)
     end
   end
+
+  describe "create_message/3" do
+    test "returns ok tuple with message" do
+      room = insert(:room)
+      user = insert(:user)
+      content = "content"
+
+      assert {:ok, %Message{room_id: ^room.id, user_id: ^user.id, content: ^content}} = Chat.create_message(room.id, user.id, content)
+    end
+  end
+
 end

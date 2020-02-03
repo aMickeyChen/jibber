@@ -15,4 +15,8 @@ defmodule Jibber.Chat do
 
     {:ok, Repo.all(query)}
   end
+
+  def create_message(room_id, user_id, content) do
+
+  end
 end
