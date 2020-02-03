@@ -17,10 +17,12 @@ defmodule Jibber.Factory do
   end
 
   def message_factory do
-    users = insert_list(2, :user)
+    room = insert(:room)
 
-    %Jibber.Chat.Room{
-      user_ids: Enum.map(users, & &1.id)
+    %Jibber.Chat.Message{
+      user_id: List.first(room.user_ids),
+      room: room,
+      content: "foobar"
     }
   end
 end

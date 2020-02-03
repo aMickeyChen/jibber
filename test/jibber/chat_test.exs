@@ -12,11 +12,11 @@ defmodule Jibber.ChatTest do
 
   describe "list_messages/1" do
     test "return a list of messages from room ID" do
-      user = insert(:user)
-      room = insert(:room, user_ids: [user.id])
-      # messages
+      room = insert(:room)
+      messages = insert_list(3, :message, room: room)
 
-      assert Chat.list_messages(room.id)
+      assert {:ok, result} = Chat.list_messages(room.id)
+      assert Enum.map(result, & &1.id) == Enum.map(messages, & &1.id)
     end
   end
 end

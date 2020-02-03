@@ -2,7 +2,7 @@ defmodule Jibber.Chat do
   use Norm
   import Ecto.Query
   alias Jibber.Repo
-  alias Jibber.Chat.Room
+  alias Jibber.Chat.{Room, Message}
 
   def list_rooms(user_id) do
     query = from(r in Room, where: ^user_id in r.user_ids)
@@ -11,9 +11,8 @@ defmodule Jibber.Chat do
   end
 
   def list_messages(room_id) do
-    true
-    # query = from(r in Room, where: ^user_id in r.user_ids)
+    query = from(m in Message, where: ^room_id == m.room_id)
 
-    # {:ok, Repo.all(query)}
+    {:ok, Repo.all(query)}
   end
 end
