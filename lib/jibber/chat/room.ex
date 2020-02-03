@@ -3,9 +3,7 @@ defmodule Jibber.Chat.Room do
   use Ecto.Schema
 
   schema "rooms" do
-    field :email, :string
-    field :password, :string
+    field :user_ids, {:array, :integer}
     timestamps()
-    # has_many :posts, Post
   end
 end

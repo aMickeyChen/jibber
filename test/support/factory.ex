@@ -7,4 +7,12 @@ defmodule Jibber.Factory do
       password: "valid_password"
     }
   end
+
+  def room_factory do
+    users = insert_list(2, :user)
+
+    %Jibber.Chat.Room{
+      user_ids: Enum.map(users, & &1.id)
+    }
+  end
 end

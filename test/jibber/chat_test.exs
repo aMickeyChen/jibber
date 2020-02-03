@@ -5,7 +5,8 @@ defmodule Jibber.ChatTest do
   describe "list_rooms/1" do
     test "return list of rooms from user IDs" do
       user = insert(:user)
-      assert Chat.list_rooms(user.id)
+      rooms = insert_list(3, :room, user_ids: [user.id])
+      assert Chat.list_rooms(user.id) == {:ok, rooms}
     end
   end
 end
