@@ -20,6 +20,7 @@ defmodule Jibber.DataCase do
     quote do
       alias Jibber.Repo
 
+      import Jibber.Factory
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
