@@ -17,6 +17,8 @@ defmodule Jibber.Chat do
   end
 
   def create_message(room_id, user_id, content) do
-
+    %Message{room_id: room_id, user_id: user_id}
+    |> Message.changeset(%{content: content})
+    |> Repo.insert()
   end
 end

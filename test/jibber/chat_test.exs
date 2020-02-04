@@ -1,6 +1,8 @@
 defmodule Jibber.ChatTest do
   use Jibber.DataCase
+
   alias Jibber.Chat
+  alias Chat.Message
 
   describe "list_rooms/1" do
     test "return list of rooms from user IDs" do
@@ -22,12 +24,12 @@ defmodule Jibber.ChatTest do
 
   describe "create_message/3" do
     test "returns ok tuple with message" do
-      room = insert(:room)
-      user = insert(:user)
+      %{id: room_id} = insert(:room)
+      %{id: user_id} = insert(:user)
       content = "content"
 
-      assert {:ok, %Message{room_id: ^room.id, user_id: ^user.id, content: ^content}} = Chat.create_message(room.id, user.id, content)
+      assert {:ok, %Message{room_id: ^room_id, user_id: ^user_id, content: ^content}} =
+               Chat.create_message(room_id, user_id, content)
     end
   end
-
 end

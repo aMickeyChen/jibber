@@ -1,6 +1,7 @@
 defmodule Jibber.Chat.Message do
   use Norm
   use Ecto.Schema
+  import Ecto.Changeset
   alias Jibber.Chat.Room
 
   schema "messages" do
@@ -9,5 +10,10 @@ defmodule Jibber.Chat.Message do
 
     belongs_to :room, Room
     timestamps()
+  end
+
+  def changeset(message, params) do
+    message
+    |> cast(params, [:content])
   end
 end
