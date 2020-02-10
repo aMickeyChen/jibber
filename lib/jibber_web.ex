@@ -24,6 +24,7 @@ defmodule JibberWeb do
       import Plug.Conn
       import JibberWeb.Gettext
       alias JibberWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Controller
     end
   end
 
@@ -43,6 +44,7 @@ defmodule JibberWeb do
       import JibberWeb.ErrorHelpers
       import JibberWeb.Gettext
       alias JibberWeb.Router.Helpers, as: Routes
+      import Phoenix.LiveView.Helpers
     end
   end
 
@@ -51,6 +53,7 @@ defmodule JibberWeb do
       use Phoenix.Router
       import Plug.Conn
       import Phoenix.Controller
+      import Phoenix.LiveView.Router
     end
   end
 
