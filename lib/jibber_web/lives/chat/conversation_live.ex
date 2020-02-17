@@ -6,7 +6,8 @@ defmodule JibberWeb.Chat.ConversationLive do
 
   @default_assign %{messages: []}
 
-  def render(assigns), do: ChatView.render("chat_panel/conversation.html", assigns |> IO.inspect(label: "ass"))
+  def render(assigns),
+    do: ChatView.render("chat_panel/conversation.html", assigns |> IO.inspect(label: "ass"))
 
   def mount(session, socket) do
     %{"room_id" => room_id} = session
