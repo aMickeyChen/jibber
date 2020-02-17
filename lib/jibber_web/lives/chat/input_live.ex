@@ -5,15 +5,25 @@ defmodule JibberWeb.Chat.InputLive do
 
   def render(assigns), do: ChatView.render("chat_panel/input.html", assigns)
 
-  def mount(_params, session, socket) do
-    session |> IO.inspect(label: "session")
-    assigns = %{input_text: ""}
+  def mount(session, socket) do
+    %{"username" => username} = session
+    assigns = %{input_text: "", username: username}
     {:ok, assign(socket, assigns)}
   end
 
-  def handle_event("message-inputing", val, socket) do
-    val |> IO.inspect(label: "value")
+  def handle_event("send-message", val, socket) do
+    if val["code"] == "Enter" do
+      Jibber.Chat.create_message(1, String.length(socket.assigns.username), val["value"])
+      |> IO.inspect()
 
-    {:noreply, socket}
+      # socket.assigns.input_text = ""
+      {:noreply, socket}
+    else
+      {:noreply, socket}
+    end
+
+    # val |> IO.inspect()
+    # socket.assigns |> IO.inspect(label: "value")
+    # {:noreply, socket}
   end
 end
