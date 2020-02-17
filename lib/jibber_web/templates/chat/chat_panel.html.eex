@@ -3,7 +3,18 @@
 
   <%= render "chat_panel/header.html" %>
 
-  <%= render "chat_panel/conversation.html" %>
+  <!-- Messages -->
+  <div class="flex-1 overflow-auto" style="background-color: #DAD3CC">
+    <%= live_render @conn, JibberWeb.Chat.ConversationLive,
+          session: %{"room_id" => 1},
+          container: {:div, class: "py-2 px-3"}
+    %>
+  </div>
 
-  <%= live_render @conn, JibberWeb.Chat.InputLive, session: %{"username" => @username} %>
+  <!-- Input -->
+  <%= live_render @conn, JibberWeb.Chat.InputLive,
+        session: %{"username" => @username},
+        container: {:div, class: "bg-grey-lighter px-4 py-4 flex items-center"}
+  %>
+
 </div>

@@ -13,7 +13,7 @@ defmodule Jibber.Chat do
   def list_messages(room_id) do
     query = from(m in Message, where: ^room_id == m.room_id)
 
-    {:ok, Repo.all(query)}
+    Repo.all(query)
   end
 
   def create_message(room_id, user_id, content) do

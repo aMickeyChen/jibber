@@ -1,13 +1,21 @@
 defmodule JibberWeb.Chat.ConversationLive do
   use Phoenix.LiveView
 
+  alias Jibber.Chat
   alias JibberWeb.ChatView
 
-  def render(assigns), do: ChatView.render("chat_panel/conversation.html", assigns)
+  @default_assign %{messages: []}
+
+  def render(assigns), do: ChatView.render("chat_panel/conversation.html", assigns |> IO.inspect(label: "ass"))
 
   def mount(session, socket) do
-    %{"username" => username} = session
-    assigns = %{input_text: "", username: username}
-    {:ok, assign(socket, assigns)}
+    %{"room_id" => room_id} = session
+    send(self(), {:load_messages, room_id})
+    {:ok, assign(socket, @default_assign)}
+  end
+
+  def handle_info({:load_messages, room_id}, socket) do
+    messages = Chat.list_messages(room_id)
+    {:noreply, assign(socket, messages: messages)}
   end
 end
