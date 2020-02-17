@@ -15,5 +15,7 @@ defmodule Jibber.Chat.Message do
   def changeset(message, params) do
     message
     |> cast(params, [:content])
+    |> foreign_key_constraint(:room_id)
+    |> foreign_key_constraint(:user_id)
   end
 end

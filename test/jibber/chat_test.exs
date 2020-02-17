@@ -17,8 +17,7 @@ defmodule Jibber.ChatTest do
       room = insert(:room)
       messages = insert_list(3, :message, room: room)
 
-      assert {:ok, result} = Chat.list_messages(room.id)
-      assert Enum.map(result, & &1.id) == Enum.map(messages, & &1.id)
+      assert room.id |> Chat.list_messages() |> Enum.map(& &1.id) == Enum.map(messages, & &1.id)
     end
   end
 

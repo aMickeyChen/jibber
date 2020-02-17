@@ -17,7 +17,7 @@ config :jibber, JibberWeb.Endpoint,
   render_errors: [view: JibberWeb.ErrorView, accepts: ~w(html json)],
   pubsub: [name: Jibber.PubSub, adapter: Phoenix.PubSub.PG2],
   live_view: [
-     signing_salt: "usOlC3WhIlowxpakubP/Rhnb6lMDySJp"
+    signing_salt: "usOlC3WhIlowxpakubP/Rhnb6lMDySJp"
   ]
 
 # Configures Elixir's Logger

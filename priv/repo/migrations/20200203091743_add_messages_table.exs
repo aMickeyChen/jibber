@@ -4,7 +4,7 @@ defmodule Jibber.Repo.Migrations.AddMessagesTable do
   def change do
     create table("messages") do
       add :content, :string
-      add :user_id, :integer
+      add :user_id, references("users")
 
       add :room_id, references("rooms")
 
