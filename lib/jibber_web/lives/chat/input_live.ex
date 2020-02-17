@@ -12,8 +12,8 @@ defmodule JibberWeb.Chat.InputLive do
   end
 
   def handle_event("send-message", val, socket) do
-    if val["code"] == "Enter" do
-      Jibber.Chat.create_message(1, String.length(socket.assigns.username), val["value"])
+    if val["code"] == "Enter" && val["value"] != "" do
+      Jibber.Chat.create_message(1, 1, val["value"])
       |> IO.inspect()
 
       # socket.assigns.input_text = ""
