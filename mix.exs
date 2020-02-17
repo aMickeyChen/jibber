@@ -33,7 +33,7 @@ defmodule Jibber.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.4.11"},
+      {:phoenix, "~> 1.4.12"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
       {:ecto_sql, "~> 3.1"},
@@ -47,7 +47,8 @@ defmodule Jibber.MixProject do
       {:mix_test_watch, "~> 1.0", only: :dev, runtime: false},
       {:faker, "~> 0.13", only: :test},
       {:stream_data, "~> 0.4"},
-      {:norm, "~> 0.10"}
+      {:norm, "~> 0.10"},
+      {:phoenix_live_view, "~> 0.5.1"}
     ]
   end
 

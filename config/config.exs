@@ -15,7 +15,10 @@ config :jibber, JibberWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "0BKlcck4XSXt6tcoO6vQgcSrO1trdAWYm5xXNY2BJDaDtqeVX2YS/K87oSWfKHg3",
   render_errors: [view: JibberWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Jibber.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Jibber.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+     signing_salt: "usOlC3WhIlowxpakubP/Rhnb6lMDySJp"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
