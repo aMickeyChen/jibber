@@ -10,6 +10,10 @@ defmodule Jibber.Account do
     {:ok, Repo.get_by(User, email: email, password: password)}
   end
 
+  def find_user(user_id) do
+    Repo.get(User, user_id)
+  end
+
   def list_users(ids) do
     query = from(u in User, where: u.id in ^ids)
 
