@@ -13,7 +13,7 @@
 
   <!-- Input -->
   <%= live_render @conn, JibberWeb.Chat.InputLive,
-        session: %{"username" => @username},
+        session: %{"username" => @username, "room_id" => 1},
         container: {:div, class: "bg-grey-lighter px-4 py-4 flex items-center"}
   %>
 

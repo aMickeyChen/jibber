@@ -11,6 +11,7 @@ defmodule JibberWeb.Chat.ConversationLive do
 
   def mount(session, socket) do
     %{"room_id" => room_id} = session
+    if connected?(socket), do: Phoenix.PubSub.subscribe(Jibber.PubSub, "chat:#{room_id}")
     send(self(), {:load_messages, room_id})
     {:ok, assign(socket, @default_assign)}
   end
