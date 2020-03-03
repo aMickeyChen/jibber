@@ -13,6 +13,7 @@ defmodule JibberWeb.Chat.InputLive do
 
   def handle_event("send-message", val, socket) do
     %{assigns: %{room_id: room_id}} = socket
+
     if val["code"] == "Enter" && val["value"] != "" do
       case Jibber.Chat.create_message(room_id, 1, val["value"]) do
         {:ok, msg} -> Phoenix.PubSub.broadcast(Jibber.PubSub, "chat:#{room_id}", {:new_msg, msg})
