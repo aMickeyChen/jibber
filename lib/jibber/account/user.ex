@@ -5,8 +5,8 @@ defmodule Jibber.Account.User do
   schema "users" do
     field :email, :string
     field :password, :string
+    field :name, :string
     timestamps()
-    # has_many :posts, Post
   end
 
   def email_spec() do

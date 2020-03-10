@@ -30,7 +30,6 @@ defmodule JibberWeb.Router do
     get "/login", PageController, :login
   end
 
-
   scope "/", JibberWeb do
     pipe_through :api
 

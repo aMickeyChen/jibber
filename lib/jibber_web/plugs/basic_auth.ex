@@ -16,7 +16,7 @@ defmodule JibberWeb.BasicAuth do
 
   defp verify(conn, id, opts) do
     case Account.get_user(id) do
-      %Account.User{}=user -> conn
+      %Account.User{} = user -> conn
       _ -> unauthorized(conn, opts)
     end
   end
@@ -28,6 +28,7 @@ defmodule JibberWeb.BasicAuth do
         |> put_resp_header("www-authenticate", @realm)
         |> send_resp(401, "unauthorized")
         |> halt()
+
       redirect_path ->
         conn
         |> redirect(to: redirect_path)
