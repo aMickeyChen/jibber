@@ -9,7 +9,8 @@ defmodule Jibber.AccountTest do
     test "returns jibber user from email and password" do
       user = insert(:user)
 
-      assert Account.login(user.email, user.password) == {:ok, user}
+      assert Account.login(user.name) == user
+      assert Repo.get_by(Account.User, name: user.name) |> Map.get(:id) == user.id
     end
   end
 

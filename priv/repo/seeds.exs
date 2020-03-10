@@ -12,7 +12,5 @@
 Jibber.Repo.insert!(%Jibber.Chat.Room{})
 
 Jibber.Repo.insert!(%Jibber.Account.User{
-  email: "some@email.com",
-  password: "password",
   name: "some some"
 })
