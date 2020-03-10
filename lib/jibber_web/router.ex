@@ -27,7 +27,7 @@ defmodule JibberWeb.Router do
       get "/", PageController, :index
     end
 
-    get "/login", PageController, :login
+    resources "/login", SessionController, singleton: true, only: [:show]
   end
 
   scope "/", JibberWeb do
