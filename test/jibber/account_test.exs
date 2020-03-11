@@ -19,7 +19,7 @@ defmodule Jibber.AccountTest do
       users = insert_list(3, :user)
       user_ids = Enum.map(users, & &1.id)
 
-      assert {:ok, result} = Account.list_users(user_ids)
+      assert result = Account.list_users(user_ids)
       assert Enum.sort_by(result, & &1.id) == Enum.sort_by(users, & &1.id)
     end
   end

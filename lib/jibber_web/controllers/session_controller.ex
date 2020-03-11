@@ -1,9 +1,12 @@
 defmodule JibberWeb.SessionController do
   use JibberWeb, :controller
 
-  alias JibberWeb.SessionView
+  plug :put_view, JibberWeb.SessionView
 
   def show(conn, params) do
-    render(conn, SessionView, "login.html")
+    render(conn, "login.html")
+  end
+
+  def create(conn, params) do
   end
 end
