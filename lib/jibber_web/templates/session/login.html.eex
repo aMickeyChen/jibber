@@ -7,10 +7,10 @@
 
   <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
     <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <form action="#" method="POST">
+      <%= form_for @conn, Routes.session_path(@conn, :create), fn f -> %>
         <div>
           <div class="mt-1 rounded-md shadow-sm">
-            <input id="email" type="email" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Your Name"/>
+            <input id="user_name" type="text" name="user[name]" required class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="Your Name"/>
           </div>
         </div>
 
@@ -21,7 +21,7 @@
             </button>
           </span>
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
 </div>

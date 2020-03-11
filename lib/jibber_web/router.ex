@@ -11,7 +11,7 @@ defmodule JibberWeb.Router do
   end
 
   pipeline :authed do
-    plug JibberWeb.BasicAuth, redirect_to: "/login"
+    plug JibberWeb.BasicAuth
   end
 
   pipeline :api do

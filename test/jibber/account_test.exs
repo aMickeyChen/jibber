@@ -12,6 +12,20 @@ defmodule Jibber.AccountTest do
       assert Account.login(user.name) == user
       assert Repo.get_by(Account.User, name: user.name) |> Map.get(:id) == user.id
     end
+
+    test "create a user with name if not found" do
+      %{name: name} = build(:user)
+
+      assert %{id: id, name: ^name} = Account.login(name)
+      refute is_nil(id)
+    end
+  end
+
+  describe "find_user/1" do
+    test "get user from user id" do
+      %{id: id} = insert(:user)
+      assert %{id: ^id} = Account.find_user(id)
+    end
   end
 
   describe "list_users/1" do
