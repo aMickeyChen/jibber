@@ -10,4 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 Jibber.Repo.insert!(%Jibber.Chat.Room{})
-Jibber.Repo.insert!(%Jibber.Account.User{email: "some@email.com", password: "password"})
+
+Jibber.Repo.insert!(%Jibber.Account.User{
+  name: "some some"
+})

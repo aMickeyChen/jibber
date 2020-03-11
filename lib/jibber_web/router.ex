@@ -10,6 +10,10 @@ defmodule JibberWeb.Router do
     plug :put_secure_browser_headers
   end
 
+  pipeline :authed do
+    plug JibberWeb.BasicAuth
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -17,7 +21,13 @@ defmodule JibberWeb.Router do
   scope "/", JibberWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    scope "/chat" do
+      pipe_through [:authed]
+
+      get "/", PageController, :index
+    end
+
+    resources "/login", SessionController, singleton: true, only: [:show, :create]
   end
 
   scope "/", JibberWeb do

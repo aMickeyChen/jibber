@@ -20,14 +20,9 @@ defmodule JibberWeb.Chat.InputLive do
         error -> error
       end
 
-      # socket.assigns.input_text = ""
       {:noreply, socket}
     else
       {:noreply, socket}
     end
-
-    # val |> IO.inspect()
-    # socket.assigns |> IO.inspect(label: "value")
-    # {:noreply, socket}
   end
 end
