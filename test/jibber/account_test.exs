@@ -5,8 +5,8 @@ defmodule Jibber.AccountTest do
 
   alias Jibber.Account
 
-  describe "login/2" do
-    test "returns jibber user from email and password" do
+  describe "login/1" do
+    test "returns jibber user from name" do
       user = insert(:user)
 
       assert Account.login(user.name) == user
