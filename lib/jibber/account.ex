@@ -21,9 +21,18 @@ defmodule Jibber.Account do
     Repo.get(User, user_id)
   end
 
-  @contract list_users(ids :: coll_of(id_spec())) :: coll_of(User.s())
-  def list_users(ids) do
+  @contract list_users(param :: one_of([coll_of(id_spec()), spec(is_binary())])) ::
+              coll_of(User.s())
+  def list_users(param), do: do_list_users(param)
+
+  defp do_list_users(ids) when is_list(ids) do
     query = from(u in User, where: u.id in ^ids)
+
+    Repo.all(query)
+  end
+
+  defp do_list_users(name) do
+    query = from(u in User, where: like(u.name, ^"%#{name}%"))
 
     Repo.all(query)
   end
