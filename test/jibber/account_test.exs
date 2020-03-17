@@ -5,8 +5,8 @@ defmodule Jibber.AccountTest do
 
   alias Jibber.Account
 
-  describe "login/2" do
-    test "returns jibber user from email and password" do
+  describe "login/1" do
+    test "returns jibber user from name" do
       user = insert(:user)
 
       assert Account.login(user.name) == user
@@ -35,6 +35,15 @@ defmodule Jibber.AccountTest do
 
       assert result = Account.list_users(user_ids)
       assert Enum.sort_by(result, & &1.id) == Enum.sort_by(users, & &1.id)
+    end
+
+    test "filters by name" do
+      users =
+        1..3
+        |> Enum.map(&insert(:user, name: "Mike#{&1}"))
+
+      assert result = Account.list_users("Mike")
+      assert result |> Enum.sort_by(& &1.id) == users |> Enum.sort_by(& &1.id)
     end
   end
 end
