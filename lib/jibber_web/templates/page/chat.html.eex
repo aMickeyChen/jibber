@@ -2,10 +2,9 @@
   <div class="container mx-auto">
     <div class="h-screen bg-gray-200">
       <div class="flex border border-grey rounded shadow-lg h-full">
-        <%= render ChatView, "user_sidebar.html", %{} %>
+        <%= render ChatView, "user_sidebar.html", conn: @conn %>
         <%= render ChatView, "chat_panel.html", conn: @conn, username: @username %>
       </div>
     </div>
   </div>
 </div>
-
